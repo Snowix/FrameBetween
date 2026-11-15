@@ -8,27 +8,11 @@
 
 **完全本地处理，媒体文件从不离开你的设备。**
 
-![version](https://img.shields.io/badge/version-1.0.0-5A4FF3)
+![version](https://img.shields.io/badge/version-1.0.0-5A4FF3) ![platform](https://img.shields.io/badge/Android-8.0%2B%20\(API%2026\)-3DDC84) ![abi](https://img.shields.io/badge/ABI-arm64--v8a-orange) ![kotlin](https://img.shields.io/badge/Kotlin-2.0.21-7F52FF) ![ffmpeg](https://img.shields.io/badge/FFmpeg-9.0.2-16182D) ![license](https://img.shields.io/badge/license-GPL--3.0--or--later-blue)
 
-![platform](https://img.shields.io/badge/Android-8.0%2B%20\(API%2026\)-3DDC84)
+🌐 [简体中文](README.md)|[English](README.en.md)
 
-![abi](https://img.shields.io/badge/ABI-arm64--v8a-orange)
-
-![kotlin](https://img.shields.io/badge/Kotlin-2.0.21-7F52FF)
-
-![ffmpeg](https://img.shields.io/badge/FFmpeg-9.0.2-16182D)
-
-![license](https://img.shields.io/badge/license-GPL--3.0--or--later-blue)
-
-|                      |                         |
-| -------------------- | ----------------------- |
-| 🌐 [简体中文](README.md) | [English](README.en.md) |
-
-[GitHub 仓库](https://github.com/Snowix/FrameBetween) ·  
-[下载安装](#快速开始) ·  
-[功能一览](#功能一览) ·  
-[从源码构建](#从源码构建) ·  
-[隐私与数据](#隐私与数据) ·
+[GitHub 仓库](https://github.com/Snowix/FrameBetween) · [下载安装](#快速开始) · [功能一览](#功能一览) · [从源码构建](#从源码构建) · [隐私与数据](#隐私与数据)
 
 > **English**: FrameBetween is an offline Android FFmpeg workstation — trim, convert, merge, subtitle, watermark and transcode video/audio on-device, with a visible command line and optional AI assistance. No account, no upload, no ads.
 
@@ -81,15 +65,15 @@
 
 ## 功能一览
 
-<table align="center">
-  <tr>
-    <td align="center"><img src="docs/images/Home%20page.jpg" alt="首页" width="300" /></td>
-    <td align="center"><img src="docs/images/FFmpeg%20Command%20line%20interface.jpg" alt="FFmpeg 命令行" width="300" /></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/images/Length%20of%20cutting.jpg" alt="时长裁剪" width="300" /></td>
-    <td align="center"><img src="docs/images/Audio%20clipping.jpg" alt="音频剪切" width="300" /></td>
-  </tr>
+<table align="center">  
+  <tr>  
+    <td align="center"><img src="docs/images/Home%20page.jpg" alt="首页" width="300" /></td>  
+    <td align="center"><img src="docs/images/FFmpeg%20Command%20line%20interface.jpg" alt="FFmpeg 命令行" width="300" /></td>  
+  </tr>  
+  <tr>  
+    <td align="center"><img src="docs/images/Length%20of%20cutting.jpg" alt="时长裁剪" width="300" /></td>  
+    <td align="center"><img src="docs/images/Audio%20clipping.jpg" alt="音频剪切" width="300" /></td>  
+  </tr>  
 </table>
 
 ### 编辑工具
@@ -268,5 +252,6 @@ A：目前仅 Android arm64-v8a，暂无其他平台计划。
 **帧间 FrameBetween · 本地处理，不上传文件**
 
 <https://github.com/Snowix/FrameBetween>
+
 
 </div>

@@ -8,24 +8,11 @@
 
 **Everything runs locally — your media never leaves the device.**
 
-![version](https://img.shields.io/badge/version-1.0.0-5A4FF3)
+![version](https://img.shields.io/badge/version-1.0.0-5A4FF3) ![platform](https://img.shields.io/badge/Android-8.0%2B%20\(API%2026\)-3DDC84) ![abi](https://img.shields.io/badge/ABI-arm64--v8a-orange) ![kotlin](https://img.shields.io/badge/Kotlin-2.0.21-7F52FF) ![ffmpeg](https://img.shields.io/badge/FFmpeg-9.0.2-16182D) ![license](https://img.shields.io/badge/license-GPL--3.0--or--later-blue)
 
-![platform](https://img.shields.io/badge/Android-8.0%2B%20\(API%2026\)-3DDC84)
+🌐 [English](README.en.md)|[简体中文](README.md)
 
-![abi](https://img.shields.io/badge/ABI-arm64--v8a-orange)
-
-![kotlin](https://img.shields.io/badge/Kotlin-2.0.21-7F52FF)
-
-![ffmpeg](https://img.shields.io/badge/FFmpeg-9.0.2-16182D)
-
-![license](https://img.shields.io/badge/license-GPL--3.0--or--later-blue)
-
-[GitHub repository](https://github.com/Snowix/FrameBetween) ·  
-[Download](#getting-started) ·  
-[Features](#features) ·  
-[Build from source](#building-from-source) ·  
-[Privacy](#privacy-and-data) ·  
-[简体中文](README.md)
+[GitHub repository](https://github.com/Snowix/FrameBetween) · [Download](#getting-started) · [Features](#features) · [Build from source](#building-from-source) · [Privacy](#privacy-and-data)
 
 > **简体中文**: 帧间是一款完全在设备本地运行的 Android 音视频处理工作台，以 FFmpeg 为引擎，可裁剪、转换、合并、加字幕与水印、转码音视频，命令行全程可见，并可选 AI 辅助。无账号、不上传、无广告。[阅读完整中文文档 →](README.md)
 
@@ -51,8 +38,6 @@ Unlike one-tap filter apps, FrameBetween keeps the command line transparent: eve
 | AI support | Cloud or local models can assist with command input, error analysis and result evaluation |
 
 ---
-
-**简体中文版本**: [README.md](README.md)
 
 ## Table of Contents
 
