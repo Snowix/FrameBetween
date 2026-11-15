@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">帧间</string>
+    <string name="channel_name">Media processing tasks</string>
+    <string name="channel_desc">Shows the status of audio and video processing tasks</string>
+</resources>

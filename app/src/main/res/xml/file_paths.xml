@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- 新版本：输入与暂存产物放 cacheDir，最终产物放外部私有目录 -->
+    <cache-path name="cache_outputs" path="outputs/" />
+    <cache-path name="cache_inputs" path="inputs/" />
+    <cache-path name="cache_tmp" path="tmp/" />
+    <cache-path name="cache_all" path="." />
+    <external-files-path name="external_outputs" path="Movies/FrameBetween/" />
+    <!-- 兼容遗留在 filesDir 的文件 -->
+    <files-path name="outputs" path="outputs/" />
+    <files-path name="inputs" path="inputs/" />
+    <files-path name="cache" path="cache/" />
+    <files-path name="files_all" path="." />
+    <external-path name="external" path="." />
+</paths>

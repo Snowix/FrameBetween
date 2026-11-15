@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  播放器统一使用 TextureView 承载画面。
+  SurfaceView 拥有独立 Surface，在 Compose 的 AndroidView 里有两个已知问题：
+  1) 部分设备 Z-order 异常导致黑屏；
+  2) 组件离开组合后 Surface 不会立刻销毁，最后一帧会在屏幕上残留约一秒。
+  TextureView 是普通 View，随 View 树一起绘制与移除，可以同时解决这两点。
+-->
+<androidx.media3.ui.PlayerView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/player_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    app:use_controller="false"
+    app:surface_type="texture_view"
+    app:resize_mode="fit"
+    app:shutter_background_color="@android:color/black" />

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 自适应图标前景：只画符号，底色由 ic_launcher_background (#5A4FF3) 提供。 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group android:scaleX="0.140625" android:scaleY="0.140625"
+        android:translateX="18" android:translateY="18">
+        <path android:pathData="M96,180 V132 Q96,96 132,96 H180"
+            android:strokeColor="#FFFFFFFF" android:strokeAlpha="0.34"
+            android:strokeWidth="16" android:strokeLineCap="round" />
+        <path android:pathData="M416,332 V380 Q416,416 380,416 H332"
+            android:strokeColor="#FFFFFFFF" android:strokeAlpha="0.34"
+            android:strokeWidth="16" android:strokeLineCap="round" />
+        <path android:fillColor="#FF38D9BE" android:pathData="M118,168 L118,344 L250,256 Z"
+            android:strokeColor="#FF38D9BE" android:strokeWidth="10" android:strokeLineJoin="round" />
+        <path android:fillColor="#FFFFFFFF" android:pathData="M262,168 L262,344 L394,256 Z"
+            android:strokeColor="#FFFFFFFF" android:strokeWidth="10" android:strokeLineJoin="round" />
+    </group>
+</vector>

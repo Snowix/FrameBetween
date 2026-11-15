@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  允许明文 HTTP：AI 助手的本地 / 局域网模型（Ollama、LM Studio 等）通常只提供
+  http://192.168.x.x:11434 这类地址，Android 9+ 默认禁止明文流量。
+  端点完全由用户自行填写，应用只会在用户主动点击「求助 AI / 测试连接」时访问。
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

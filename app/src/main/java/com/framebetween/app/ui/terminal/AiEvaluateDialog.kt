@@ -1,0 +1,194 @@
+package com.framebetween.app.ui.terminal
+import com.framebetween.app.core.L10n
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AutoAwesome
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
+import com.framebetween.app.core.AiCommandParser
+
+/**
+ * 「AI效果评估」浮层：展示 AI 对「处理前后文件信息 + 脱敏命令 + 剪辑要求」的评估结论，
+ * 可把 AI 给出的改进命令填回命令框。按需求依次移除【继续询问】、底部【关闭】
+ * 【复制全文】与说明备注；现在通过右上角关闭图标、点对话框外或返回键隐藏，
+ * 状态由 TerminalScreen 保留，再次点击【AI效果评估】即可恢复。
+ */
+@Composable
+fun AiEvaluateDialog(
+    reply: String,
+    loading: Boolean,
+    error: String,
+    onDismiss: () -> Unit,
+    onUseCommand: (String) -> Unit
+) {
+    val clipboard = LocalClipboardManager.current
+    var selectedIndex by remember(reply) { mutableStateOf(0) }
+    val commands = remember(reply) { AiCommandParser.extractAll(reply) }
+    val command = commands.getOrNull(selectedIndex).orEmpty()
+
+    Dialog(
+        onDismissRequest = onDismiss,
+        properties = DialogProperties(
+            dismissOnBackPress = true,
+            dismissOnClickOutside = true,
+            usePlatformDefaultWidth = false
+        )
+    ) {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
+                .heightIn(max = 560.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surface
+            )
+        ) {
+            Column(Modifier.padding(16.dp)) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        Icons.Default.AutoAwesome,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.size(20.dp)
+                    )
+                    Spacer(Modifier.width(8.dp))
+                    Text(
+                        L10n.t("AI效果评估"),
+                        style = MaterialTheme.typography.titleMedium,
+                        modifier = Modifier.weight(1f)
+                    )
+                    IconButton(onClick = onDismiss) {
+                        Icon(
+                            Icons.Default.Close,
+                            contentDescription = L10n.t("隐藏到 AI效果评估按钮")
+                        )
+                    }
+                }
+                Spacer(Modifier.height(8.dp))
+
+                if (loading) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        CircularProgressIndicator(
+                            modifier = Modifier.size(20.dp),
+                            strokeWidth = 2.dp
+                        )
+                        Spacer(Modifier.width(8.dp))
+                        Text(
+                            L10n.t("正在等待 AI 回复…"),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                    Spacer(Modifier.height(8.dp))
+                }
+
+                Column(
+                    Modifier
+                        .fillMaxWidth()
+                        .heightIn(max = 280.dp)
+                        .verticalScroll(rememberScrollState())
+                ) {
+                    if (reply.isNotBlank()) {
+                        Text(reply, style = MaterialTheme.typography.bodySmall)
+                    } else if (!loading && error.isBlank()) {
+                        Text(
+                            L10n.t("暂无回复"),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                    if (error.isNotBlank()) {
+                        Spacer(Modifier.height(6.dp))
+                        Text(
+                            error,
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.error
+                        )
+                    }
+                }
+
+                if (commands.isNotEmpty()) {
+                    Spacer(Modifier.height(10.dp))
+                    Text(
+                        if (commands.size > 1) {
+                            L10n.t("识别到 %1\$s 条命令，请选择要使用的备选", commands.size)
+                        } else {
+                            L10n.t("识别到的命令")
+                        },
+                        style = MaterialTheme.typography.labelMedium
+                    )
+                    if (commands.size > 1) {
+                        Spacer(Modifier.height(4.dp))
+                        LazyRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                            items(commands.size) { index ->
+                                FilterChip(
+                                    selected = index == selectedIndex,
+                                    onClick = { selectedIndex = index },
+                                    label = { Text(L10n.t("备选 %1\$s", index + 1)) }
+                                )
+                            }
+                        }
+                    }
+                    Spacer(Modifier.height(6.dp))
+                    Card(Modifier.fillMaxWidth()) {
+                        Text(
+                            command,
+                            Modifier.padding(10.dp),
+                            fontFamily = FontFamily.Monospace,
+                            fontSize = 11.sp,
+                            lineHeight = 16.sp
+                        )
+                    }
+                    Spacer(Modifier.height(8.dp))
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Button(
+                            onClick = { onUseCommand(command) },
+                            modifier = Modifier.weight(1f)
+                        ) { Text(L10n.t("填入命令框")) }
+                        OutlinedButton(
+                            onClick = { clipboard.setText(AnnotatedString(command)) },
+                            modifier = Modifier.weight(1f)
+                        ) { Text(L10n.t("复制命令")) }
+                    }
+                }
+
+            }
+        }
+    }
+}

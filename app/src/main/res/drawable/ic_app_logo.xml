@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 帧间 FrameBetween 品牌图标：靛紫圆角方块 + 薄荷/白双三角 + 取景框角标。
+     由 brand/vector/framebetween-icon.svg 1:1 转写，主色 #5A4FF3、光缝色 #38D9BE。 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+    <path
+        android:fillColor="#FF5A4FF3"
+        android:pathData="M112,0 H400 A112,112 0 0,1 512,112 V400 A112,112 0 0,1 400,512 H112 A112,112 0 0,1 0,400 V112 A112,112 0 0,1 112,0 Z" />
+    <path
+        android:pathData="M96,180 V132 Q96,96 132,96 H180"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeAlpha="0.34"
+        android:strokeWidth="16"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M416,332 V380 Q416,416 380,416 H332"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeAlpha="0.34"
+        android:strokeWidth="16"
+        android:strokeLineCap="round" />
+    <path
+        android:fillColor="#FF38D9BE"
+        android:pathData="M118,168 L118,344 L250,256 Z"
+        android:strokeColor="#FF38D9BE"
+        android:strokeWidth="10"
+        android:strokeLineJoin="round" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M262,168 L262,344 L394,256 Z"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="10"
+        android:strokeLineJoin="round" />
+</vector>
